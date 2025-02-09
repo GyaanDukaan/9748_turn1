@@ -1,0 +1,87 @@
+main.cpp: In member function ‘void ConcurrentHashMap::insert(const std::string&, const Order&)’:
+main.cpp:24:14: error: ‘unique_lock’ is not a member of ‘std’
+   24 |         std::unique_lock<std::shared_mutex> lock(mutex_);
+      |              ^~~~~~~~~~~
+main.cpp:7:1: note: ‘std::unique_lock’ is defined in header ‘’; did you forget to ‘#include ’?
+    6 | #include <algorithm>
+  +++ |+#include <mutex>
+    7 | 
+main.cpp:24:43: error: expected primary-expression before ‘>’ token
+   24 |         std::unique_lock<std::shared_mutex> lock(mutex_);
+      |                                           ^
+main.cpp:24:45: error: ‘lock’ was not declared in this scope; did you mean ‘clock’?
+   24 |         std::unique_lock<std::shared_mutex> lock(mutex_);
+      |                                             ^~~~
+      |                                             clock
+main.cpp: In member function ‘void ConcurrentHashMap::update(const std::string&, int, const Order&)’:
+main.cpp:32:14: error: ‘unique_lock’ is not a member of ‘std’
+   32 |         std::unique_lock<std::shared_mutex> lock(mutex_);
+      |              ^~~~~~~~~~~
+main.cpp:32:14: note: ‘std::unique_lock’ is defined in header ‘’; did you forget to ‘#include ’?
+main.cpp:32:43: error: expected primary-expression before ‘>’ token
+   32 |         std::unique_lock<std::shared_mutex> lock(mutex_);
+      |                                           ^
+main.cpp:32:45: error: ‘lock’ was not declared in this scope; did you mean ‘clock’?
+   32 |         std::unique_lock<std::shared_mutex> lock(mutex_);
+      |                                             ^~~~
+      |                                             clock
+main.cpp: In member function ‘void ConcurrentHashMap::remove(const std::string&)’:
+main.cpp:46:14: error: ‘unique_lock’ is not a member of ‘std’
+   46 |         std::unique_lock<std::shared_mutex> lock(mutex_);
+      |              ^~~~~~~~~~~
+main.cpp:46:14: note: ‘std::unique_lock’ is defined in header ‘’; did you forget to ‘#include ’?
+main.cpp:46:43: error: expected primary-expression before ‘>’ token
+   46 |         std::unique_lock<std::shared_mutex> lock(mutex_);
+      |                                           ^
+main.cpp:46:45: error: ‘lock’ was not declared in this scope; did you mean ‘clock’?
+   46 |         std::unique_lock<std::shared_mutex> lock(mutex_);
+      |                                             ^~~~
+      |                                             clock
+main.cpp: In member function ‘void ConcurrentHashMap::display() const’:
+main.cpp:51:56: error: no matching function for call to ‘std::shared_lock::shared_lock(const std::shared_mutex&)’
+   51 |         std::shared_lock<std::shared_mutex> lock(mutex_);
+      |                                                        ^
+In file included from main.cpp:5:
+/usr/include/c++/13/shared_mutex:759:9: note: candidate: ‘template std::shared_lock<_Mutex>::shared_lock(mutex_type&, const std::chrono::duration<_Rep, _Period>&) [with _Period = _Rep; _Mutex = std::shared_mutex]’
+  759 |         shared_lock(mutex_type& __m,
+      |         ^~~~~~~~~~~
+/usr/include/c++/13/shared_mutex:759:9: note:   template argument deduction/substitution failed:
+main.cpp:51:56: note:   candidate expects 2 arguments, 1 provided
+   51 |         std::shared_lock<std::shared_mutex> lock(mutex_);
+      |                                                        ^
+/usr/include/c++/13/shared_mutex:753:9: note: candidate: ‘template std::shared_lock<_Mutex>::shared_lock(mutex_type&, const std::chrono::time_point<_Clock, _Duration>&) [with _Duration = _Clock; _Mutex = std::shared_mutex]’
+  753 |         shared_lock(mutex_type& __m,
+      |         ^~~~~~~~~~~
+/usr/include/c++/13/shared_mutex:753:9: note:   template argument deduction/substitution failed:
+main.cpp:51:56: note:   candidate expects 2 arguments, 1 provided
+   51 |         std::shared_lock<std::shared_mutex> lock(mutex_);
+      |                                                        ^
+/usr/include/c++/13/shared_mutex:773:7: note: candidate: ‘std::shared_lock<_Mutex>::shared_lock(std::shared_lock<_Mutex>&&) [with _Mutex = std::shared_mutex]’
+  773 |       shared_lock(shared_lock&& __sl) noexcept : shared_lock()
+      |       ^~~~~~~~~~~
+/usr/include/c++/13/shared_mutex:773:33: note:   no known conversion for argument 1 from ‘const std::shared_mutex’ to ‘std::shared_lock&&’
+  773 |       shared_lock(shared_lock&& __sl) noexcept : shared_lock()
+      |                   ~~~~~~~~~~~~~~^~~~
+/usr/include/c++/13/shared_mutex:749:7: note: candidate: ‘std::shared_lock<_Mutex>::shared_lock(mutex_type&, std::adopt_lock_t) [with _Mutex = std::shared_mutex; mutex_type = std::shared_mutex]’
+  749 |       shared_lock(mutex_type& __m, adopt_lock_t)
+      |       ^~~~~~~~~~~
+/usr/include/c++/13/shared_mutex:749:7: note:   candidate expects 2 arguments, 1 provided
+/usr/include/c++/13/shared_mutex:746:7: note: candidate: ‘std::shared_lock<_Mutex>::shared_lock(mutex_type&, std::try_to_lock_t) [with _Mutex = std::shared_mutex; mutex_type = std::shared_mutex]’
+  746 |       shared_lock(mutex_type& __m, try_to_lock_t)
+      |       ^~~~~~~~~~~
+/usr/include/c++/13/shared_mutex:746:7: note:   candidate expects 2 arguments, 1 provided
+/usr/include/c++/13/shared_mutex:743:7: note: candidate: ‘std::shared_lock<_Mutex>::shared_lock(mutex_type&, std::defer_lock_t) [with _Mutex = std::shared_mutex; mutex_type = std::shared_mutex]’
+  743 |       shared_lock(mutex_type& __m, defer_lock_t) noexcept
+      |       ^~~~~~~~~~~
+/usr/include/c++/13/shared_mutex:743:7: note:   candidate expects 2 arguments, 1 provided
+/usr/include/c++/13/shared_mutex:739:7: note: candidate: ‘std::shared_lock<_Mutex>::shared_lock(mutex_type&) [with _Mutex = std::shared_mutex; mutex_type = std::shared_mutex]’ (near match)
+  739 |       shared_lock(mutex_type& __m)
+      |       ^~~~~~~~~~~
+/usr/include/c++/13/shared_mutex:739:7: note:   conversion of argument 1 would be ill-formed:
+main.cpp:51:50: error: binding reference of type ‘std::shared_lock::mutex_type&’ {aka ‘std::shared_mutex&’} to ‘const std::shared_mutex’ discards qualifiers
+   51 |         std::shared_lock<std::shared_mutex> lock(mutex_);
+      |                                                  ^~~~~~
+/usr/include/c++/13/shared_mutex:736:7: note: candidate: ‘std::shared_lock<_Mutex>::shared_lock() [with _Mutex = std::shared_mutex]’
+  736 |       shared_lock() noexcept : _M_pm(nullptr), _M_owns(false) { }
+      |       ^~~~~~~~~~~
+/usr/include/c++/13/shared_mutex:736:7: note:   candidate expects 0 arguments, 1 provided
